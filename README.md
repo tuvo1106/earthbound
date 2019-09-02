@@ -9,7 +9,8 @@
 - Create RESTful API endpoints using Express framework
 - Understand Express's request/response cycle
 - Use third-party middleware such as morgan.js for logging
-- Handle CRUD (create, read, update, destroy) requests from users
+- Chain custom middleware to validate input from users
+- Handle CRUD (create, read, update, destroy) request operations
 - Use Postman in development workflow
 - Manage models with MongoDB and Mongoose
 
