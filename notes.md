@@ -9,3 +9,7 @@
 ## Configure ESLint and Prettier
 
 - npm i eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-config-airbnb eslint-plugin-node eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --save-dev
+
+## What is Mongoose, and Why Use It
+
+- Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js, a higher level of abstraction

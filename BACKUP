@@ -1,0 +1,6 @@
+NODE_ENV=development
+PORT=3000
+USERNAME=tu
+PASSWORD=123456
+DATABASE=mongodb+srv://tuvo1106:<PASSWORD>@cluster0-quyp4.mongodb.net/earthbound?retryWrites=true&w=majority
+DATABASE_PASSWORD=HtXN7YqrEV4ap8a2

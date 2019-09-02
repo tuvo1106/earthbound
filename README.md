@@ -13,7 +13,10 @@
 - Utilize environmental variables to switch between development/production modes
 - Handle CRUD (create, read, update, destroy) request operations
 - Use Postman in development workflow
-- Manage models with MongoDB and Mongoose
+- Manage models with MongoDB
+  - Differientiate between collections/documents in Mongo's nonrelational structure
+  - Configure Compass GUI
+  - Create a hosted database with Atlas
 
 ## Requirements
 
