@@ -4,13 +4,14 @@
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "author": "Tu Vo",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
