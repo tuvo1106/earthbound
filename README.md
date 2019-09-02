@@ -10,6 +10,7 @@
 - Understand Express's request/response cycle
 - Use third-party middleware such as morgan.js for logging
 - Chain custom middleware to validate input from users
+- Utilize environmental variables to switch between development/production modes
 - Handle CRUD (create, read, update, destroy) request operations
 - Use Postman in development workflow
 - Manage models with MongoDB and Mongoose

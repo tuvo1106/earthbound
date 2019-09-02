@@ -4,11 +4,13 @@
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "Tu Vo",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.1"
