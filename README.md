@@ -7,6 +7,8 @@
 ## Learning Objectives
 
 - Create RESTful API endpoints using Express framework
+- Understand Express's request/response cycle
+- Use third-party middleware such as morgan.js for logging
 - Handle CRUD (create, read, update, destroy) requests from users
 - Use Postman in development workflow
 - Manage models with MongoDB and Mongoose
