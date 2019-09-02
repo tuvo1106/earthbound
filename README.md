@@ -7,6 +7,7 @@
 ## Learning Objectives
 
 - Create RESTful API endpoints using Express framework
+- Handle CRUD (create, read, update, destroy) operations to models
 - Use Postman in development workflow
 - Manage models with MongoDB and Mongoose
 

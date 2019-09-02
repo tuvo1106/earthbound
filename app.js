@@ -23,7 +23,7 @@ app.get("/api/v1/tours", (req, res) => {
 // variable url
 // ? makes it optional
 app.get("/api/v1/tours/:id", (req, res) => {
-  console.log(req.params); // { id: 5 }
+  // console.log(req.params); { id: 5 }
   // convert string to number
   const id = req.params.id * 1;
 
@@ -61,6 +61,23 @@ app.post("/api/v1/tours", (req, res) => {
       });
     }
   );
+});
+
+// patch - expect properties that will be updated, not whole JSON
+app.patch("/api/v1/tours/:id", (req, res) => {
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "invalid ID"
+    });
+  }
+  // will not implement patch with local storage
+  res.status(200).json({
+    status: "success",
+    data: {
+      tour: "<updated tour"
+    }
+  });
 });
 
 const port = 3000;
