@@ -6,6 +6,10 @@
 
 ## Learning Objectives
 
+MVC Architecture
+
+### Controller
+
 - Create RESTful API endpoints using Express framework
 - Understand Express's request/response cycle
 - Use third-party middleware such as morgan.js for logging
@@ -13,13 +17,6 @@
 - Utilize environmental variables to switch between development/production
 - Handle CRUD (create, read, update, destroy) operations
 - Use Postman in development workflow
-- Manage models with MongoDB/Compass
-  - Import local database to hosted cluster with Mongo Atlas
-- Add ODM (Object Data Modeling) layer of abstraction with Mongoose
-  - Build mongoose schemas and models
-- Maintain and scale application in regards to MVC architecture
-- Separate application logic and business logic
-- Implement "fat models/thin controllers" strategy
 - Write NodeJs scripts to import/delete models from database
 - Make API querying better by implementing the following options:
   - filtering
@@ -27,6 +24,23 @@
   - limiting fields
   - pagination
   - aliasing
+
+### Models
+
+- Manage models with MongoDB/Compass
+  - Import local database to hosted cluster with Mongo Atlas
+- Add ODM (Object Data Modeling) layer of abstraction with Mongoose
+  - Build mongoose schemas and models
+- Separate application logic and business logic
+- Implement "fat models/thin controllers" strategy
+- Use aggregation pipelines to get insight about data
+  - Matching
+  - Grouping
+  - Unwinding
+  - Projecting
+
+### Views
+
 - ...
 
 ## Requirements
