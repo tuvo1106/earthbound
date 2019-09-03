@@ -38,11 +38,11 @@ exports.getTourByID = async (req, res) => {
 
 exports.createTour = async (req, res) => {
   try {
-    const newTour = await Tour.create(req.body);
+    const tour = await Tour.create(req.body);
     res.status(201).json({
       status: 'success',
       data: {
-        tour: newTour
+        tour
       }
     });
   } catch (err) {
@@ -53,14 +53,24 @@ exports.createTour = async (req, res) => {
   }
 };
 
-exports.updateTour = (req, res) => {
-  // will not implement patch with local storage
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tour: '<updated tour'
-    }
+exports.updateTour = async (req, res) => {
+  const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
   });
+  try {
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour
+      }
+    });
+  } catch (err) {
+    res.send(404).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 exports.deleteTour = (req, res) => {
