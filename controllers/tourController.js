@@ -73,11 +73,17 @@ exports.updateTour = async (req, res) => {
   }
 };
 
-exports.deleteTour = (req, res) => {
-  // will not implement patch with local storage
-  // 204 means no content
-  res.status(204).json({
-    status: 'success',
-    data: null
-  });
+exports.deleteTour = async (req, res) => {
+  await Tour.findByIdAndDelete(req.params.id);
+  try {
+    res.status(204).json({
+      status: 'success',
+      data: null
+    });
+  } catch (err) {
+    res.send(404).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
