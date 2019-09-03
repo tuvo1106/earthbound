@@ -17,6 +17,8 @@
   - Differientiate between collections/documents in Mongo's nonrelational structure
   - Configure Compass GUI
   - Create a hosted database with Atlas
+- Add ODM (Object Data Modeling) layer of abstraction with Mongoose
+  - Build mongoose schemas and models
 
 ## Requirements
 
