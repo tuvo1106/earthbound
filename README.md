@@ -10,18 +10,24 @@
 - Understand Express's request/response cycle
 - Use third-party middleware such as morgan.js for logging
 - Chain custom middleware to validate input from users
-- Utilize environmental variables to switch between development/production modes
-- Handle CRUD (create, read, update, destroy) request operations
+- Utilize environmental variables to switch between development/production
+- Handle CRUD (create, read, update, destroy) operations
 - Use Postman in development workflow
-- Manage models with MongoDB
-  - Differientiate between collections/documents in Mongo's nonrelational structure
-  - Configure Compass GUI
-  - Create a hosted database with Atlas
+- Manage models with MongoDB/Compass
+  - Import local database to hosted cluster with Mongo Atlas
 - Add ODM (Object Data Modeling) layer of abstraction with Mongoose
   - Build mongoose schemas and models
-- Maintain and scale application with regards to MVC architecture
+- Maintain and scale application in regards to MVC architecture
 - Separate application logic and business logic
-- Implement "fat models/thin controllers" strategy in app design
+- Implement "fat models/thin controllers" strategy
+- Write NodeJs scripts to import/delete models from database
+- Make API querying better by implementing the following options:
+  - filtering
+  - sorting
+  - limiting fields
+  - pagination
+  - aliasing
+- ...
 
 ## Requirements
 
