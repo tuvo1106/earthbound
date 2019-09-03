@@ -19,6 +19,9 @@
   - Create a hosted database with Atlas
 - Add ODM (Object Data Modeling) layer of abstraction with Mongoose
   - Build mongoose schemas and models
+- Maintain and scale application with regards to MVC architecture
+- Separate application logic and business logic
+- Implement "fat models/thin controllers" strategy in app design
 
 ## Requirements
 
