@@ -39,7 +39,8 @@ MVC Architecture
   - Unwinding
   - Projecting
 - Define virtual properties on schemas
-- Create document middleware
+- Utilize document/aggregation middleware to control flow of data
+- Use built-in and custom validators
 
 ### Views
 
