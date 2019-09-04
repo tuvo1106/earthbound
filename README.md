@@ -24,6 +24,14 @@ MVC Architecture
   - limiting fields
   - pagination
   - aliasing
+- Debug with NDB
+- Handle all potential errors in application:
+  - Bad paths
+  - Invalid database IDs
+  - Duplicate database fields
+  - Mongoose validation errors
+  - Unhandled rejections
+  - Uncaught exceptions
 
 ### Models
 
