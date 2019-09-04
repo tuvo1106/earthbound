@@ -38,6 +38,8 @@ MVC Architecture
   - Grouping
   - Unwinding
   - Projecting
+- Define virtual properties on schemas
+- Create document middleware
 
 ### Views
 
