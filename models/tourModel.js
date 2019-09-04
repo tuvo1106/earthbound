@@ -111,7 +111,7 @@ tourSchema.pre('/^find/', function (next) {
 
 // aggregation middleware to exclude secret tours
 tourSchema.pre('aggregate', function (next) {
-  this.pipeline().unshift({ match: { secretTour: { $ne: true } } })
+  this.pipeline().unshift({ $match: { secretTour: { $ne: true } } })
   next()
 })
 
