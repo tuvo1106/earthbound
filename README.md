@@ -51,6 +51,7 @@ MVC Architecture
 - Use built-in and custom validators
 - Authenticate users and manage passwords
   - Encrypt passwords in database with bcrypt hashing function
+  - Exchange Json Web Tokens for stateless authentication
 
 ### Views
 
