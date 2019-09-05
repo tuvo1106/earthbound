@@ -36,3 +36,7 @@
     - Validating user input data
     - Ensuring only users who bought a tour can review it
 - Fat models/thin controllers: offload as much logic as possible into the models, and keep the controllers as simple and lean as possible
+
+## Json Web Tokens
+
+- stateless solution for authentication

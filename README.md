@@ -49,6 +49,8 @@ MVC Architecture
 - Define virtual properties on schemas
 - Utilize document/aggregation middleware to control flow of data
 - Use built-in and custom validators
+- Authenticate users and manage passwords
+  - Encrypt passwords in database with bcrypt hashing function
 
 ### Views
 
