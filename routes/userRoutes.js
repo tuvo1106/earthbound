@@ -7,12 +7,20 @@ const {
   updateUser,
   deleteUser
 } = require('./../controllers/userController');
-const { signUp, login } = require('./../controllers/authController');
+const {
+  signUp,
+  login,
+  forgotPassword,
+  resetPassword
+} = require('./../controllers/authController');
 
 const router = express.Router();
 
 router.post('/signup', signUp);
 router.post('/login', login);
+
+router.post('/forgotPassword', forgotPassword);
+router.post('/resetPassword', resetPassword);
 
 router
   .route('/')
