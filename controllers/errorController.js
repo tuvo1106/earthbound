@@ -1,5 +1,11 @@
 const AppError = require('./../utils/appError')
 
+const handleJWTExpiredError = () =>
+  new AppError('Your token has expired. Please log in again!', 401)
+
+const handleJWTError = () =>
+  new AppError('Invalid token. Please log in again!', 401)
+
 const handleValidationErrorDB = err => {
   const errors = Object.values(err.errors).map(el => el.message)
   const message = `Invalid input data: ${errors.join('. ')}.`
@@ -63,6 +69,14 @@ module.exports = (err, req, res, next) => {
     // mongoose validation errors
     if (error.name === 'ValidationError') {
       error = handleValidationErrorDB(error)
+    }
+    // jwt errors
+    if (error.name === 'JsonWebTokenError') {
+      error = handleJWTError()
+    }
+    // expired tokens
+    if (error.name == 'TokenExpiredError') {
+      error = handleJWTExpiredError()
     }
     sendErrorProd(error, res)
   }
