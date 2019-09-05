@@ -32,6 +32,15 @@ MVC Architecture
   - Mongoose validation errors
   - Unhandled rejections
   - Uncaught exceptions
+- Authenticate users and manage passwords
+  - Encrypt passwords in database with bcrypt hashing function
+  - Exchange Json Web Tokens for stateless authentication
+  - Protect routes with custom middleware that validate headers
+  - Users should not have access to routes if:
+    - they are not logged in
+    - jwt token is invalid
+    - token payload has been manipulated
+    - user recently changed password after token was established
 
 ### Models
 
@@ -49,9 +58,6 @@ MVC Architecture
 - Define virtual properties on schemas
 - Utilize document/aggregation middleware to control flow of data
 - Use built-in and custom validators
-- Authenticate users and manage passwords
-  - Encrypt passwords in database with bcrypt hashing function
-  - Exchange Json Web Tokens for stateless authentication
 
 ### Views
 
