@@ -1,5 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
+const rateLimit = require('express-rate-limit')
+const helmet = require('helmet')
 
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controllers/errorController')
@@ -9,7 +11,10 @@ const userRouter = require('./routes/userRoutes')
 // start app
 const app = express()
 
-// middleware
+// global middleware
+// set security HTTP headers
+app.use(helmet())
+// development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
   app.use((req, res, next) => {
@@ -18,7 +23,19 @@ if (process.env.NODE_ENV === 'development') {
   })
 }
 
-app.use(express.json())
+// limit requests from same IP
+const limiter = rateLimit({
+  // 100 requests per hour
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, please try again in an hour!'
+})
+app.use('/api', limiter)
+
+// body parser, limit to only 10kb
+app.use(express.json({ limit: '10kb' }))
+
+// serve static file
 app.use(express.static(`${__dirname}/public/`))
 
 // mounting routers

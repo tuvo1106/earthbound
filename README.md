@@ -16,7 +16,7 @@ MVC Architecture
 - Chain custom middleware to validate input from users
 - Utilize environmental variables to switch between development/production
 - Handle CRUD (create, read, update, destroy) operations
-- Use Postman in development workflow
+- Use Postman in development workflow to test APIs
 - Write NodeJs scripts to import/delete models from database
 - Make API querying better by implementing the following options:
   - filtering
@@ -43,6 +43,10 @@ MVC Architecture
     - user recently changed password after token was established
   - Reset forgotten passwords through Nodemailer
   - Allow user to update passwords and deactivate accounts
+  - Send HTTPOnly cookies along with JWTs
+  - Set rate limiting with express-rate-limit library
+  - Use helmet to set security HTTP Headers
+  - Sanitize data to prevent NoSQL query injections/Cross-Site Scripting attacks
 
 ### Models
 
