@@ -42,7 +42,12 @@ const userSchema = new mongoose.Schema({
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
-  passwordResetExpires: Date
+  passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false
+  }
 })
 
 // document middleware to encrypt password
@@ -62,6 +67,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.correctPassword = async function (inputPsw, actualPsw) {
   return bcrypt.compare(inputPsw, actualPsw)
 };
+
 userSchema.methods.changedPasswordAfter = async function (JTWTimestamp) {
   // this refers to the current document
   if (this.passwordChangedAt) {
@@ -74,6 +80,7 @@ userSchema.methods.changedPasswordAfter = async function (JTWTimestamp) {
   // false means not changed
   return false
 };
+
 userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex')
   this.passwordResetToken = crypto
@@ -83,11 +90,18 @@ userSchema.methods.createPasswordResetToken = function () {
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000
   return resetToken
 };
+
 userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) {
     return next()
   }
   this.passwordChangedAt = Date.now() - 1000
+  next()
+})
+
+userSchema.pre(/^find/, function (next) {
+  // this points to current query
+  this.find({ active: { $ne: false } })
   next()
 })
 
