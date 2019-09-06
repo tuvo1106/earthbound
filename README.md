@@ -35,12 +35,14 @@ MVC Architecture
 - Authenticate users and manage passwords
   - Encrypt passwords in database with bcrypt hashing function
   - Exchange Json Web Tokens for stateless authentication
-  - Protect routes with custom middleware that validate headers
+  - Protect routes with middleware that validate Bearer headers
   - Users should not have access to routes if:
     - they are not logged in
     - jwt token is invalid
     - token payload has been manipulated
     - user recently changed password after token was established
+  - Reset forgotten passwords through Nodemailer
+  - Allow user to update passwords
 
 ### Models
 
@@ -58,6 +60,7 @@ MVC Architecture
 - Define virtual properties on schemas
 - Utilize document/aggregation middleware to control flow of data
 - Use built-in and custom validators
+- Define roles for different types of users
 
 ### Views
 
