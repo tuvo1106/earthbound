@@ -47,6 +47,7 @@ MVC Architecture
   - Set rate limiting with express-rate-limit library
   - Use helmet to set security HTTP Headers
   - Sanitize data to prevent NoSQL query injections/Cross-Site Scripting attacks
+  - Prevent parameter pollution
 
 ### Models
 

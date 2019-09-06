@@ -77,4 +77,13 @@ Other Best Practices
 - Confirm user email address after first creating account
 - Keep user logged in with refresh tokens
 - Implement two-factor authentication
-- Prevent parameter pollution causing Uncaight Exceptions
+- Prevent parameter pollution causing Uncaught Exceptions
+
+## NoSQL Injection
+
+```json
+{
+  "username": { "$gt": "" },
+  "password": "<common_password>"
+}
+```
