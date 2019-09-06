@@ -42,7 +42,7 @@ MVC Architecture
     - token payload has been manipulated
     - user recently changed password after token was established
   - Reset forgotten passwords through Nodemailer
-  - Allow user to update passwords
+  - Allow user to update passwords and deactivate accounts
 
 ### Models
 

@@ -40,3 +40,7 @@
 ## Json Web Tokens
 
 - stateless solution for authentication
+
+## Security Best Practices
+
+-
