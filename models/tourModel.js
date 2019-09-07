@@ -135,17 +135,18 @@ tourSchema.pre('save', function (next) {
 // })
 
 // query middleware to exclude secret tours
-tourSchema.pre('/^find/', function (next) {
+tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } })
   next()
 })
 
-tourSchema.pre('/^find/', function (next) {
+tourSchema.pre(/^find/, function (next) {
   // populate guides by ObjectId
   this.populate({
     path: 'guides',
     select: '-__v -passwordChangedAt'
   })
+  next()
 })
 
 // aggregation middleware to exclude secret tours
