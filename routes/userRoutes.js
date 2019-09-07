@@ -2,7 +2,6 @@
 const express = require('express')
 const {
   getAllUsers,
-  createUser,
   getUserByID,
   updateUser,
   deleteUser,
@@ -15,7 +14,8 @@ const {
   protect,
   forgotPassword,
   resetPassword,
-  updatePassword
+  updatePassword,
+  restrictTo
 } = require('./../controllers/authController')
 
 const router = express.Router()
@@ -29,15 +29,12 @@ router.patch('/updateMyPassword', protect, updatePassword)
 router.patch('/updateMe', protect, updateMe)
 router.patch('/deleteMe', protect, deleteMe)
 
-router
-  .route('/')
-  .get(getAllUsers)
-  .post(createUser)
+router.route('/').get(getAllUsers)
 
 router
   .route('/:id')
   .get(getUserByID)
   .patch(updateUser)
-  .delete(deleteUser)
+  .delete(protect, restrictTo('user'), deleteUser)
 
 module.exports = router
