@@ -11,6 +11,7 @@ const reviewSchema = new mongoose.Schema(
       min: [1, 'Rating must be above than or equal to 1.0'],
       max: [5, 'Rating must be less than or equal to 5.0']
     },
+    photo: String,
     createdDate: {
       type: Date,
       default: Date.now()
@@ -32,6 +33,18 @@ const reviewSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 )
+
+reviewSchema.pre(/^find/, function (next) {
+  // have to call populate twice for both references
+  this.populate({
+    path: 'tour',
+    select: 'name'
+  }).populate({
+    path: 'user',
+    select: 'name photo'
+  })
+  next()
+})
 
 const Review = mongoose.model('Review', reviewSchema)
 
