@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
-const validator = require('validator')
 
 const tourSchema = new mongoose.Schema(
   {
@@ -119,6 +118,13 @@ const tourSchema = new mongoose.Schema(
 // arrow functions do not get their own this keyword
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7
+})
+
+// virtual populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id'
 })
 
 // document middleware; runs before save() command and create()

@@ -35,11 +35,7 @@ const reviewSchema = new mongoose.Schema(
 )
 
 reviewSchema.pre(/^find/, function (next) {
-  // have to call populate twice for both references
   this.populate({
-    path: 'tour',
-    select: 'name'
-  }).populate({
     path: 'user',
     select: 'name photo'
   })
