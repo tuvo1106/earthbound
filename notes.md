@@ -87,3 +87,52 @@ Other Best Practices
   "password": "<common_password>"
 }
 ```
+
+## Data Modeling
+
+- Different types of relationships between data
+- Referencing/normalization vs embedding/denormalization
+- Embedding or referencing other documents
+- Types of referencing
+- Relationships:
+  - 1:1
+  - 1:many
+    - 1:few
+    - 1:many
+    - 1:ton
+  - many:many
+- Referencing/normalized: relationships are referenced by ID (child referencing)
+- Embedded/denormalized: embed documents in main documents
+  - Performance: we cna get all the info in one query
+  - Impossible to query the embedded document on its own
+- When to embed and when to reference? A Practial framework
+
+  - Relationship type (how two datasets are related to each other)
+    - embed: 1:few, 1:many
+    - ref: 1:many, 1:ton, many:many
+  - Data access patterns (how often data is read/written)
+    - embed: data is mostly read, data does not change quickly, high read/write ratio
+    - red: data is updated a lot, low read/write ratio
+  - Data closeness (how much the data is related)
+    - embed: datasets really belong together
+    - red: we frequently need to query both datasets on their own
+  - Three different types of referencing
+    - Child referencing
+      - array of IDs
+      - 1:few
+    - Parent referencing
+      - child always knows its parent; not other way around
+      - 1:many, 1:ton
+    - Two-way referencing
+      - many:many
+  - Summary:
+
+    - Structure your data to match the ways that your application queries and update data
+    - Identify the questions that arise from your application's use cases first, and then model your data so that the questions can get answered in the most effecient way
+    - In general, always favor embedding, unless there is a good reason not to embed. Especially on 1:few and 1:many
+    - A 1:ton or a many:many relationship is usually a good reason to reference instead of embedding
+    - Also, favor referencing when data is updated a lot and if you need to frequently access a dataset on its own
+    - Use embedding when data is mostly read but rarely updated, and when two datasets belong intrinsically together
+    - Arrays should never be allowed to grow indefinitely (16 mb limit)
+    - Use two-way referencing for many:many relationships
+      ...
