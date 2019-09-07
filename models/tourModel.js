@@ -106,7 +106,8 @@ const tourSchema = new mongoose.Schema(
         description: String,
         day: Number
       }
-    ]
+    ],
+    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
   },
   // options
   {
@@ -126,10 +127,25 @@ tourSchema.pre('save', function (next) {
   next()
 })
 
+// only for embedding guides into model, will not use
+// tourSchema.pre('save', async function (next) {
+//   const guidesPromises = this.guides.map(async id => User.findById(id))
+//   this.guides = await Promise.all(guidesPromises)
+//   next()
+// })
+
 // query middleware to exclude secret tours
 tourSchema.pre('/^find/', function (next) {
   this.find({ secretTour: { $ne: true } })
   next()
+})
+
+tourSchema.pre('/^find/', function (next) {
+  // populate guides by ObjectId
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt'
+  })
 })
 
 // aggregation middleware to exclude secret tours
