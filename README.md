@@ -66,6 +66,9 @@ MVC Architecture
 - Utilize document/aggregation middleware to control flow of data
 - Use built-in and custom validators
 - Define roles for different types of users
+- Embed geospatial documents into existing documents
+- Reference other documents via populate()
+  - Implement virtual populating when necessary
 
 ### Views
 
