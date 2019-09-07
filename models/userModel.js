@@ -66,7 +66,7 @@ userSchema.pre('save', async function (next) {
 // instance methods
 userSchema.methods.correctPassword = async function (inputPsw, actualPsw) {
   return bcrypt.compare(inputPsw, actualPsw)
-};
+}
 
 userSchema.methods.changedPasswordAfter = async function (JTWTimestamp) {
   // this refers to the current document
@@ -79,7 +79,7 @@ userSchema.methods.changedPasswordAfter = async function (JTWTimestamp) {
   }
   // false means not changed
   return false
-};
+}
 
 userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex')
@@ -89,7 +89,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .digest('hex')
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000
   return resetToken
-};
+}
 
 userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) {

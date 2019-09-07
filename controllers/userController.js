@@ -10,7 +10,7 @@ const filterObj = (obj, ...allowedFields) => {
     }
   })
   return newObj
-};
+}
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find()
@@ -29,28 +29,28 @@ exports.createUser = (req, res) => {
     status: 'error',
     message: 'this route is not yet defined'
   })
-};
+}
 
 exports.getUserByID = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'this route is not yet defined'
   })
-};
+}
 
 exports.updateUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'this route is not yet defined'
   })
-};
+}
 
 exports.deleteUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'this route is not yet defined'
   })
-};
+}
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // create error if user POSTs password data

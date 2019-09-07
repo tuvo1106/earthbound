@@ -11,7 +11,7 @@ const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN
   })
-};
+}
 
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id)
@@ -40,7 +40,7 @@ const createSendToken = (user, statusCode, res) => {
       user
     }
   })
-};
+}
 
 exports.signUp = catchAsync(async (req, res, next) => {
   const user = await User.create({
@@ -110,7 +110,7 @@ exports.restrictTo = (...roles) => {
       )
     }
     next()
-  };
+  }
 }
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
@@ -130,7 +130,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   const message =
     'Forgot your password? Submit a patch request with ' +
     `your new password and passwordConfirm to ${resetURL}.\n` +
-    'If you did not forget your password, please ignore this message.';
+    'If you did not forget your password, please ignore this message.'
   try {
     await sendEmail({
       email: user.email,
