@@ -118,6 +118,7 @@ const tourSchema = new mongoose.Schema(
 
 // set single field index in ascending
 tourSchema.index({ slug: 1 })
+tourSchema.index({ startLocation: '2dsphere' })
 
 // arrow functions do not get their own this keyword
 tourSchema.virtual('durationWeeks').get(function () {
