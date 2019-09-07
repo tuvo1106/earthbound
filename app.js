@@ -10,6 +10,7 @@ const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controllers/errorController')
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
+const reviewRouter = require('./routes/reviewRoutes')
 
 // start app
 const app = express()
@@ -47,7 +48,7 @@ app.use(xss())
 // prevent parameter pollution
 app.use(
   hpp({
-    // allow for duplicate in query string
+    // allow for duplicates in query string
     whitelist: [
       'duration',
       'ratingsQuantity',
@@ -65,6 +66,7 @@ app.use(express.static(`${__dirname}/public/`))
 // mounting routers
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/reviews', reviewRouter)
 
 // all other routes
 app.all('*', (req, res, next) => {
