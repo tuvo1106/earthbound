@@ -48,6 +48,10 @@ MVC Architecture
   - Use helmet to set security HTTP Headers
   - Sanitize data to prevent NoSQL query injections/Cross-Site Scripting attacks
   - Prevent parameter pollution
+  - Implement nested routes
+    - Use Express's mergeParams feature to combine routes
+  - Create factory functions to standardize CRUD operations
+  - Make geospatial queries with latitude/longitude fields
 
 ### Models
 
@@ -69,6 +73,7 @@ MVC Architecture
 - Embed geospatial documents into existing documents
 - Reference other documents via populate()
   - Implement virtual populating when necessary
+- Improve read performance with custom indexes
 
 ### Views
 
