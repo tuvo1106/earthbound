@@ -77,7 +77,11 @@ MVC Architecture
 
 ### Views
 
-- ...
+- Use pug.js as template library
+  - Dynamically load data from API
+  - Use builtins such as loops, conditionals and mixins
+- Embed an interactive map in front-end with Mapbox
+  - Set custom markers for tour locations
 
 ## Requirements
 
