@@ -82,6 +82,8 @@ MVC Architecture
   - Use builtins such as loops, conditionals and mixins
 - Embed an interactive map in front-end with Mapbox
   - Set custom markers for tour locations
+- Verify if users are logged by checking broswer cookies
+- Manage javascript assets with web application bundler like Parcel
 
 ## Requirements
 
