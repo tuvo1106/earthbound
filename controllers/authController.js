@@ -198,24 +198,39 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 })
 
 // only for rendered pages, no errors!
-exports.isLoggedIn = catchAsync(async (req, res, next) => {
+exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
-    // verify token
-    const decoded = await promisify(jwt.verify)(
-      req.cookies.jwt,
-      process.env.JWT_SECRET
-    )
+    try {
+      // verify token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      )
 
-    const freshUser = await User.findById(decoded.id)
-    if (!freshUser) {
+      const freshUser = await User.findById(decoded.id)
+      if (!freshUser) {
+        return next()
+      }
+      if (!freshUser.changedPasswordAfter(decoded.iat)) {
+        return next()
+      }
+      // pug templates will have access to res.locals
+      res.locals.user = freshUser
+      return next()
+    } catch (err) {
       return next()
     }
-    if (!freshUser.changedPasswordAfter(decoded.iat)) {
-      return next()
-    }
-    // pug templates will have access to res.locals
-    res.locals.user = freshUser
-    return next()
   }
   next()
-})
+}
+
+exports.logOut = (req, res) => {
+  console.log('here')
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  })
+  res.status(200).json({
+    status: 'success'
+  })
+}
