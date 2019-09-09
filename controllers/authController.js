@@ -74,6 +74,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   const auth = req.headers.authorization
   if (auth && auth.startsWith('Bearer')) {
     token = auth.split(' ')[1]
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt
   }
   if (!token) {
     return next(
@@ -193,4 +195,27 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   // User.findByIDandUpdate will not validate
   // log user in
   createSendToken(user, 200, res)
+})
+
+// only for rendered pages, no errors!
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    // verify token
+    const decoded = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET
+    )
+
+    const freshUser = await User.findById(decoded.id)
+    if (!freshUser) {
+      return next()
+    }
+    if (!freshUser.changedPasswordAfter(decoded.iat)) {
+      return next()
+    }
+    // pug templates will have access to res.locals
+    res.locals.user = freshUser
+    return next()
+  }
+  next()
 })
