@@ -10,15 +10,15 @@ MVC Architecture
 
 ### Controller
 
-- Create RESTful API endpoints using Express framework
+- Create RESTful API endpoints using the Express framework
 - Understand Express's request/response cycle
-- Use third-party middleware such as morgan.js for logging
-- Chain custom middleware to validate input from users
+- Use logging middleware such as morgan.js
+- Chain custom middleware to validate requests from users
 - Utilize environmental variables to switch between development/production
-- Handle CRUD (create, read, update, destroy) operations
+- Handle all CRUD (create, read, update, destroy) operations
 - Use Postman in development workflow to test APIs
 - Write NodeJs scripts to import/delete models from database
-- Make API querying better by implementing the following options:
+- Improve API querying by implementing the following features:
   - filtering
   - sorting
   - limiting fields
@@ -43,15 +43,14 @@ MVC Architecture
     - user recently changed password after token was established
   - Reset forgotten passwords through Nodemailer
   - Allow user to update passwords and deactivate accounts
-  - Send HTTPOnly cookies along with JWTs
-  - Set rate limiting with express-rate-limit library
-  - Use helmet to set security HTTP Headers
-  - Sanitize data to prevent NoSQL query injections/Cross-Site Scripting attacks
-  - Prevent parameter pollution
-  - Implement nested routes
-    - Use Express's mergeParams feature to combine routes
-  - Create factory functions to standardize CRUD operations
-  - Make geospatial queries with latitude/longitude fields
+- Send HTTPOnly cookies along with JWTs
+- Set rate limiting with express-rate-limit library
+- Use helmet to set security HTTP Headers
+- Sanitize data to prevent NoSQL query injections/Cross-Site Scripting attacks
+- Prevent parameter pollution in API requests
+- Implement nested routes using Express's mergeParams
+- Create factory functions to standardize CRUD operations
+- Make geospatial queries with latitude/longitude fields
 
 ### Models
 
@@ -59,7 +58,6 @@ MVC Architecture
   - Import local database to hosted cluster with Mongo Atlas
 - Add ODM (Object Data Modeling) layer of abstraction with Mongoose
   - Build mongoose schemas and models
-- Separate application logic and business logic
 - Implement "fat models/thin controllers" strategy
 - Use aggregation pipelines to get insight about data
   - Matching
@@ -68,9 +66,9 @@ MVC Architecture
   - Projecting
 - Define virtual properties on schemas
 - Utilize document/aggregation middleware to control flow of data
-- Use built-in and custom validators
+- Use built-ins and custom validators
 - Define roles for different types of users
-- Embed geospatial documents into existing documents
+- Embed geospatial properties into existing documents
 - Reference other documents via populate()
   - Implement virtual populating when necessary
 - Improve read performance with custom indexes
