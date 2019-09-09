@@ -6,11 +6,15 @@
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Tu Vo",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.1.0",
@@ -26,6 +30,7 @@
     "ndb": "^1.1.4",
     "nodemailer": "^6.3.0",
     "nodemon": "^1.19.1",
+    "parcel-bundler": "^1.12.3",
     "pug": "^2.0.4",
     "slugify": "^1.3.4",
     "validator": "^11.1.0",
