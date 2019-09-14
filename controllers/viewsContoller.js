@@ -27,7 +27,7 @@ exports.login = catchAsync(async (req, res, next) => {
 })
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  res.status(200).render('signup', {
+  res.status(200).render('signUp', {
     title: 'Sign Up'
   })
 })
