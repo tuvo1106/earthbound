@@ -78,10 +78,10 @@ MVC Architecture
 - Use pug.js as template library
   - Dynamically load data from API
   - Use builtins such as loops, conditionals and mixins
-- Embed an interactive map in front-end with Mapbox
+- Embed an interactive map on client-side with Mapbox
   - Set custom markers for tour locations
 - Verify if users are logged by checking broswer cookies
-- Manage javascript assets with web application bundler like Parcel
+- Manage javascript assets with Parcel (web application bundler)
 
 ## Requirements
 
@@ -93,7 +93,7 @@ MVC Architecture
 
 ```js
 npm install
-npm run start
+npm run start:dev
 ```
 
 ## Author
