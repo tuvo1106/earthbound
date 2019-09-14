@@ -24,6 +24,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 // serve static file
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 app.use(cookieParser())
 
 // global middleware
