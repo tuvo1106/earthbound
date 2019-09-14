@@ -35,3 +35,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
     title: 'Sign Up'
   })
 })
+
+exports.getAccount = (req, res) => {
+  res.status(200).render('account', {
+    title: 'Your account'
+  })
+}
