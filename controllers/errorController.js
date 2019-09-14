@@ -23,30 +23,51 @@ const handleCastErrorDB = err => {
   return new AppError(message, 400)
 }
 
-const sendErrorDev = (err, res) => {
-  res.status(err.statusCode).json({
-    status: err.status,
-    err: err,
-    message: err.message,
-    stack: err.stack
+const sendErrorDev = (err, req, res) => {
+  // api
+  if (req.originalUrl.startsWith('/api')) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      err: err,
+      message: err.message,
+      stack: err.stack
+    })
+  }
+  // rendered
+  return res.status(err.statusCode).render('error', {
+    title: 'Error!',
+    msg: err.message
   })
 }
 
-const sendErrorProd = (err, res) => {
-  // operation, trusted error, send message to client
-  if (err.isOperational) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message
-    })
-  } else {
+const sendErrorProd = (err, req, res) => {
+  if (req.originalUrl.startsWith('/api')) {
+    // operation, trusted error, send message to client
+    if (err.isOperational) {
+      return res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message
+      })
+    }
     // unknown error
     console.error('ERROR', err)
-    res.status(500).json({
+    return res.status(500).json({
       status: 'error',
       message: '🔥 Something went very wrong... 🔥'
     })
   }
+  if (err.isOperational) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      message: err.message
+    })
+  }
+  // unknown error
+  console.error('ERROR', err)
+  return res.status(err.statusCode).render('error', {
+    title: 'Something went wrong!',
+    msg: 'Please try again later.'
+  })
 }
 
 module.exports = (err, req, res, next) => {
@@ -55,9 +76,10 @@ module.exports = (err, req, res, next) => {
   err.status = err.status || 'error'
 
   if (process.env.NODE_ENV === 'development') {
-    sendErrorDev(err, res)
+    sendErrorDev(err, req, res)
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err }
+    error.message = err.message
     // invalid IDs
     if (error.name === 'CastError') {
       error = handleCastErrorDB(error)
@@ -78,6 +100,6 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'TokenExpiredError') {
       error = handleJWTExpiredError()
     }
-    sendErrorProd(error, res)
+    sendErrorProd(error, req, res)
   }
 }
