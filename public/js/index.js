@@ -5,7 +5,7 @@ import { displayMap } from './mapbox'
 
 // dom elements
 const mapBox = document.getElementById('map')
-const loginForm = document.querySelector('.form')
+const loginForm = document.querySelector('.form__login')
 const logoutBtn = document.querySelector('.nav__el--logout')
 const signUpBtn = document.querySelector('.form__signUp')
 

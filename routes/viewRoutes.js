@@ -4,7 +4,8 @@ const {
   getTour,
   login,
   signUp,
-  getAccount
+  getAccount,
+  updateUserData
 } = require('./../controllers/viewsContoller')
 const { isLoggedIn, protect } = require('./../controllers/authController')
 
@@ -15,5 +16,7 @@ router.get('/tour/:slug', isLoggedIn, getTour)
 router.get('/login', isLoggedIn, login)
 router.get('/signup', isLoggedIn, signUp)
 router.get('/me', protect, getAccount)
+
+router.post('/submit-user-data', protect, updateUserData)
 
 module.exports = router
