@@ -76,12 +76,13 @@ MVC Architecture
 ### Views
 
 - Use pug.js as template library
-  - Dynamically load data from API
+  - Dynamically load data from database
   - Use builtins such as loops, conditionals and mixins
 - Embed an interactive map on client-side with Mapbox
   - Set custom markers for tour locations
-- Verify if users are logged by checking broswer cookies
+- Verify if users are logged by checking browser cookies
 - Manage javascript assets with Parcel (web application bundler)
+- Send form data with axios to backend APIs
 
 ## Requirements
 
