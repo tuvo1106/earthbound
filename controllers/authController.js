@@ -226,7 +226,6 @@ exports.isLoggedIn = async (req, res, next) => {
 }
 
 exports.logOut = (req, res) => {
-  console.log('here')
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true

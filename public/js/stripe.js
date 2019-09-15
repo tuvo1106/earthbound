@@ -15,7 +15,6 @@ export const bookTour = async tourId => {
     })
     // 4242-4242-4242 cc number
   } catch (err) {
-    console.log(err)
     showAlert('error', err)
   }
 }

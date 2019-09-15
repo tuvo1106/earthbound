@@ -49,8 +49,6 @@ const sendErrorProd = (err, req, res) => {
         message: err.message
       })
     }
-    // unknown error
-    console.error('ERROR', err)
     return res.status(500).json({
       status: 'error',
       message: '🔥 Something went very wrong... 🔥'
@@ -62,8 +60,6 @@ const sendErrorProd = (err, req, res) => {
       message: err.message
     })
   }
-  // unknown error
-  console.error('ERROR', err)
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: 'Please try again later.'

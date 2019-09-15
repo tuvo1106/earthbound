@@ -12,9 +12,6 @@ process.on('uncaughtException', err => {
 dotenv.config({ path: './config.env' })
 const app = require('./app')
 
-// print env variables
-// console.log(process.env)
-
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
@@ -28,7 +25,6 @@ mongoose
     useFindAndModify: false
   })
   .then(con => {
-    // console.log(con.connections)
     console.log('⚙️  DB connection successful! ⚙️')
   })
   .catch(err => {

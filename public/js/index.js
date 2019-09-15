@@ -43,7 +43,6 @@ if (signUpBtn) {
 
 if (bookBtn) {
   bookBtn.addEventListener('click', e => {
-    console.log('clicked')
     e.target.textContent = 'Processing...'
     const { tourId } = e.target.dataset
     bookTour(tourId)

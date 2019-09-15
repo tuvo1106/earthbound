@@ -20,7 +20,6 @@ mongoose
     useFindAndModify: false
   })
   .then(con => {
-    // console.log(con.connections)
     console.log('⚙️  DB connection successful! ⚙️')
   })
 
@@ -37,8 +36,7 @@ const importData = async () => {
     await Tour.create(tours)
     // validation will be skipped
     await User.create(users, { validateBeforeSave: false })
-    await Review.create(reviews)
-    console.log('Data successfully loaded.')
+    await Review.create(reviews).log('Data successfully loaded.')
   } catch (err) {
     console.log(err)
   }
