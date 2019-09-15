@@ -2,12 +2,14 @@ import '@babel/polyfill'
 import { login, logout } from './login'
 import { signUp } from './signUp'
 import { displayMap } from './mapbox'
+import { bookTour } from './stripe'
 
 // dom elements
 const mapBox = document.getElementById('map')
 const loginForm = document.querySelector('.form__login')
 const logoutBtn = document.querySelector('.nav__el--logout')
 const signUpBtn = document.querySelector('.form__signUp')
+const bookBtn = document.getElementById('book-tour')
 
 // delegation
 if (mapBox) {
@@ -36,5 +38,14 @@ if (signUpBtn) {
     const password = document.getElementById('password').value
     const passwordConfirm = document.getElementById('passwordConfirm').value
     signUp(name, email, password, passwordConfirm)
+  })
+}
+
+if (bookBtn) {
+  bookBtn.addEventListener('click', e => {
+    console.log('clicked')
+    e.target.textContent = 'Processing...'
+    const { tourId } = e.target.dataset
+    bookTour(tourId)
   })
 }

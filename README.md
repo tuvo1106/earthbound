@@ -51,6 +51,7 @@ MVC Architecture
 - Implement nested routes using Express's mergeParams
 - Create factory functions to standardize CRUD operations
 - Make geospatial queries with latitude/longitude fields
+- Integrate Stripe on Back-end for checkouts
 
 ### Models
 
@@ -83,6 +84,7 @@ MVC Architecture
 - Verify if users are logged by checking browser cookies
 - Manage javascript assets with Parcel (web application bundler)
 - Send form data with axios to backend APIs
+- Process payments on front-end with Stripe
 
 ## Requirements
 
@@ -94,6 +96,7 @@ MVC Architecture
 
 ```js
 npm install
+npm run build:js
 npm run start:dev
 ```
 
