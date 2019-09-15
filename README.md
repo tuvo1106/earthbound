@@ -86,6 +86,11 @@ MVC Architecture
 - Send form data with axios to backend APIs
 - Process payments on front-end with Stripe
 
+### Deployment
+
+- Host web application on Heroku
+- Catch SIGTERM signals to shut down servers gracefully
+
 ## Requirements
 
 - All files are created and compiled on Mac OS X 10.11 with NodeJS 10.16.3

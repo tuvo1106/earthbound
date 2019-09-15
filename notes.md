@@ -136,3 +136,13 @@ Other Best Practices
     - Arrays should never be allowed to grow indefinitely (16 mb limit)
     - Use two-way referencing for many:many relationships
       ...
+
+## HEROKU
+
+- heroku login
+- heroku create
+- git push heroku master
+- heroku open
+- heroku logs
+- heroku config:set <KEY>=<VALUE>
+- heroku apps:rename earthbound
