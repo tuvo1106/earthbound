@@ -146,3 +146,5 @@ Other Best Practices
 - heroku logs
 - heroku config:set <KEY>=<VALUE>
 - heroku apps:rename earthbound
+- heroku ps
+- heroku ps:restart

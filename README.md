@@ -90,6 +90,7 @@ MVC Architecture
 
 - Host web application on Heroku
 - Catch SIGTERM signals to shut down servers gracefully
+- Enable cross-origin resource sharing
 
 ## Requirements
 
