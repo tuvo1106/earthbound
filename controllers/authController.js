@@ -12,22 +12,17 @@ const signToken = id => {
   })
 }
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id)
-  const cookieOptions = {
+  res.cookie('jwt', token, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     // browser cannot modify cookie
-    httpOnly: true
-  }
-
-  // send cookie
-  if (process.env.NODE_ENV === 'production') {
-    // https only
-    cookieOptions.secure = true
-  }
-  res.cookie('jwt', token, cookieOptions)
+    httpOnly: true,
+    // heroku specific
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+  })
 
   // remove password from output
   user.password = undefined
@@ -48,7 +43,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm
   })
-  createSendToken(user, 201, res)
+  createSendToken(user, 201, req, res)
 })
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -64,7 +59,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('Incorrect email or password', 401))
   }
   // if everything is ok, send token to client
-  createSendToken(user, 200, res)
+  createSendToken(user, 200, req, res)
 })
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -178,7 +173,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   await user.save()
   // update changedPasswordAt property for the user
   // log the user in, send JWT
-  createSendToken(user, 200, res)
+  createSendToken(user, 200, req, res)
 })
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -194,7 +189,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   await user.save()
   // User.findByIDandUpdate will not validate
   // log user in
-  createSendToken(user, 200, res)
+  createSendToken(user, 200, req, res)
 })
 
 // only for rendered pages, no errors!
