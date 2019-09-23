@@ -1,5 +1,19 @@
 # Notes
 
+## Node
+
+Node dependencies
+- V8 - JS engine created by Google; executes JS code
+- libuv - C++ engine that gives Node access to systems calls and networking/concurrency
+- process.binding() - converts JS code to C++
+
+Threading
+- threads are units of instructions waiting to be executed by the CPU
+- deciding which order to execute threads is referred to as scheduling (controlled by OS)
+- in order to improve rate of processing threads, one must add more CPU cores or allow OS scheduler is detect big pauses due to I/O
+- there are 4 other threads node uses besides event loop to offload expensive calculations
+- almost all http requests are delegated to underlying OS and are out of event loop
+
 ## The Essence of Express Development: the Request/Response Cycle
 
 - Everything is middleware (even routers)
