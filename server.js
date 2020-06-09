@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
 // listen to uncaught exceptions
-process.on('uncaughtException', err => {
+process.on('uncaughtException', (err) => {
   console.log('Uncaught Exception!')
   console.log(err.name, err.message)
   process.exit(1)
@@ -22,12 +22,13 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true,
   })
-  .then(con => {
+  .then((con) => {
     console.log('⚙️  DB connection successful! ⚙️')
   })
-  .catch(err => {
+  .catch((err) => {
     console.log('💥  DB connection not successful! 💥')
     console.log(err)
     process.exit(1)
@@ -38,7 +39,7 @@ const port = process.env.PORT || 3000
 const server = app.listen(port)
 
 // listen to rejected promises
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   console.log('Unhandled Rejection!')
   console.log(err.name, err.message)
   server.close(() => {
